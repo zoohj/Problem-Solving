@@ -1,6 +1,5 @@
-#4153 이상한 기호[함수]
+#4153 직각삼각형
 '''
-3, 4, 5
 input: A, B
 ouput: 직각삼각형 확인(right, wrong)
 '''
@@ -18,4 +17,5 @@ while True:
     if (nums[0]**2+nums[1]**2==nums[2]**2):
         print("right")
     else: 
+
         print("wrong")
