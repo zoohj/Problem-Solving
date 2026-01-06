@@ -11,6 +11,8 @@ import sys
 
 n= int(sys.stdin.readline())
 char_list= list(sys.stdin.readline().rstrip())
+mod=1234567891
 for i in range(n):
     char_list[i]=(ord(char_list[i])-96)*31**(i)
-print(sum(char_list))
+hash = sum(char_list)
+print(hash%mod)
