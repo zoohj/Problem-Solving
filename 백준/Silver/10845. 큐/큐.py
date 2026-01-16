@@ -1,53 +1,65 @@
 #10845 큐
 '''
-큐 구현 (Deque 사용)
+큐 구현 (Circualr Queue 원형 큐 사용!)
 '''
 
-
-
-from collections import deque
 import sys
 input = sys.stdin.readline
 
-class Que(deque):
+class Que:
     def __init__(self):
-        super().__init__()
+        self.max_size = n +1
+        self.data = [0] * self.max_size
+        self.front_idx = 0 
+        self.rear_idx = 0
 
     def push(self, num):
-        self.append(num)
+        self.rear_idx = (self.rear_idx +1) % self.max_size
+        self.data[self.rear_idx]=num
+        
     def item_pop(self):
-        if not self:
-            print("-1")
-        else:
-            print(self.popleft())
+        if not self.front_idx == self.rear_idx:
+            self.front_idx =(self.front_idx+1)%self.max_size
+            answer = self.data[self.front_idx]
+            return answer
+        return -1
 
     def size(self):
-        return print(len(self))
+        # 해라
+        size = (self.rear_idx - self.front_idx + self.max_size) % self.max_size
+        return size
+    
     def empty(self):
-        if not self:
-            return print(1)
-        return print(0)
+        if self.front_idx == self.rear_idx:
+            return 1
+        return 0
 
     def front(self):
-        if self:
-            return print(self[0])
-        else: 
-            print("-1")
+        if self.front_idx==self.rear_idx:
+            return -1
+        location = (self.front_idx + 1)% self.max_size
+        answer = self.data[location]
+        return answer
+
     def back(self):
-        if self:
-            return print(self[-1])
-        else: 
-            print("-1")
+        if self.front_idx==self.rear_idx:
+            return -1
+        answer = self.data[self.rear_idx]
+        return answer
+
 
 n = int(input())
-qu = Que()
+
+MAX_SIZE = 10000
+
+que = Que()
 
 commands= {
-    "pop": qu.item_pop,
-    "size": qu.size,
-    "empty": qu.empty,
-    "front": qu.front,
-    "back": qu.back
+    "pop": que.item_pop,
+    "size": que.size,
+    "empty": que.empty,
+    "front": que.front,
+    "back": que.back
 }
 
 for _ in range(n):
@@ -56,7 +68,7 @@ for _ in range(n):
 
     if command == "push":
         num = line[1] 
-        qu.push(num)
+        que.push(num)
     
     elif command in commands:
-        commands[command]()   #딕셔너리에서 함수 꺼내서 바로 호출
+        print(commands[command]())  
