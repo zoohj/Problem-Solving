@@ -20,9 +20,7 @@ from collections import deque
 
 t = int(input())
 for _ in range(t):
-    curious_count = 0
     n, curious = map(int, input().split())
-    # 문서의 중요도
     importance = list(map(int, input().split()))
 
     # 중요도 개수 저장 배열 선언 (0은 비워두고 1~9)
@@ -33,24 +31,22 @@ for _ in range(t):
     # deque에 (문서번호, 중요도) 튜플로 저장
     # deque([(0, 1), (1, 1), (2, 9), (3, 1), (4, 1), (5, 1)])
     dq = deque((i, v) for i, v in enumerate(importance))
-
     count = 0
+
     # 중요도 높은 순부터 역순으로 탐색
     for i in range(9, 0, -1):
-        if importance_count == 0:
-            pass
         for _ in range(importance_count[i]):
-            while True:
-                # 원하는 중요도가 아닌 경우 뒤로 보냄
-                if dq[0][1] != i:
-                    dq.rotate(-1)
-                else:
-                    count += 1
-                    # 궁금한 문서가 인쇄된 경우 count 저장
-                    if dq[0][0] == curious:
-                        curious_count = count
+            # 원하는 중요도가 아닌 경우 뒤로 보냄
+            while dq[0][1] != i:
+                dq.rotate(-1)
 
-                    # 원하는 중요도일 때, 문서 인쇄
-                    dq.popleft()
-                    break
-    print(curious_count)
+            count += 1
+            idx, _ = dq.popleft()
+            # 궁금한 문서가 인쇄된 경우 count 저장
+            if idx == curious:
+                print(count)
+                break  # 안쪽 for문 탈출
+        # for가 break없이 끝났을 때(궁금한 문서 순서 찾았을 경우)
+        else:
+            continue  # 안쪽 for문이 정상종료 되면 실행 (아직 못찾고 다음 중요도 넘어가)
+        break  # 바깥 for문 탈출 (전체 종료)
