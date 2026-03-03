@@ -1,7 +1,7 @@
 # https://www.acmicpc.net/problem/1238
 # 1238 파티
 # 알고리즘: 다익스트라
-# 핵심:
+# 핵심: 역방향 그래프의 이해
 
 from collections import deque
 import heapq
@@ -9,35 +9,32 @@ import sys
 
 input = sys.stdin.readline
 
-"""
-n개의 숫자로 구분된 각각의 마을 한명의 학생
-n명의 학생이 x마을로 가야함
-m개의 단방향 도로
-i번째 길을 지나가는데 시간 소비(가중치가 다름)
-가장 많은 시간 소비하는 학생
-
-다시 그들의 마을로 돌아와야함! (왕복을 계산해야함)
-"""
 
 # 시작점, 끝점, 가중치
 
 n, m, x = map(int, input().split())
+# 정방향 그래프 (X → i 계산용)
 graph = [[] for _ in range(n + 1)]
+# 역방향 그래프 (i → X 계산용)
+reverse_graph = [[] for _ in range(n + 1)]
 
 for _ in range(m):
     s, e, w = map(int, input().split())
     # 간선 입력
     graph[s].append((e, w))  # 내가 어디로 갈 수 있는지 적어둔 표
+    reverse_graph[e].append(
+        (s, w)
+    )  # 어짜피 반대로 가도 길은 계산은 똑같으니까 퍼트리려고 임의로 뒤집음
 
 
-def dijkstra(start, end):
+def dijkstra(start, graph):
     # 시작점에서 각 노드까지 현재까지 알고 있는 최소 시간
     distance = [float("inf")] * (n + 1)  # 무한대로 초기화시켜놓음
     distance[start] = 0
-    # q는 걍 그건가보다 stack?
+    # heap 리스트 선언, heapq에 인자로 넘겨줌
     heap = []
     # 가장 작은 값부터 꺼내주는 상자, 지금까지 발견한 노드중에 가장 가까운애를 꺼내주도록 도와줌
-    heapq.heappush(heap, (0, start))  # (거리, 노드번호) distance[start],start 넣은건가?
+    heapq.heappush(heap, (0, start))  # (거리, 노드번호)
     while heap:
         # 지금까지 발견된 것 중 가장 가까운 노드
         dist, now = heapq.heappop(heap)  #
@@ -51,14 +48,17 @@ def dijkstra(start, end):
             if new_cost < distance[next]:
                 distance[next] = new_cost
                 heapq.heappush(heap, (new_cost, next))  # (거리, 노드번호)
-    return distance[end]
+    return distance
 
 
-max_t = []
+# X → 모든 마을 거리
+dist_from_x = dijkstra(x, graph)
+# 모든 마을 → X 거리
+dist_to_x = dijkstra(x, reverse_graph)
 
-# 1에서 x, 2에서 x, 3에서 x,
+answer = 0
 for i in range(1, n + 1):
-    min_time_person = dijkstra(i, x) + dijkstra(x, i)
-    heapq.heappush(max_t, -min_time_person)
+    # 왕복 시간 중 최대값 찾기
+    answer = max(answer, dist_from_x[i] + dist_to_x[i])
 
-print(-heapq.heappop(max_t))
+print(answer)
