@@ -9,24 +9,6 @@ import sys
 
 input = sys.stdin.readline
 
-
-# 시작점, 끝점, 가중치
-
-n, m, x = map(int, input().split())
-# 정방향 그래프 (X → i 계산용)
-graph = [[] for _ in range(n + 1)]
-# 역방향 그래프 (i → X 계산용)
-reverse_graph = [[] for _ in range(n + 1)]
-
-for _ in range(m):
-    s, e, w = map(int, input().split())
-    # 간선 입력
-    graph[s].append((e, w))  # 내가 어디로 갈 수 있는지 적어둔 표
-    reverse_graph[e].append(
-        (s, w)
-    )  # 어짜피 반대로 가도 길은 계산은 똑같으니까 퍼트리려고 임의로 뒤집음
-
-
 def dijkstra(start, graph):
     # 시작점에서 각 노드까지 현재까지 알고 있는 최소 시간
     distance = [float("inf")] * (n + 1)  # 무한대로 초기화시켜놓음
@@ -51,6 +33,22 @@ def dijkstra(start, graph):
     return distance
 
 
+# 시작점, 끝점, 가중치
+
+n, m, x = map(int, input().split())
+# 정방향 그래프 (X → i 계산용)
+graph = [[] for _ in range(n + 1)]
+# 역방향 그래프 (i → X 계산용)
+reverse_graph = [[] for _ in range(n + 1)]
+
+for _ in range(m):
+    s, e, w = map(int, input().split())
+    # 간선 입력
+    graph[s].append((e, w))  # 내가 어디로 갈 수 있는지 적어둔 표
+    reverse_graph[e].append(
+        (s, w)
+    )  # 어짜피 반대로 가도 길은 계산은 똑같으니까 퍼트리려고 임의로 뒤집음
+
 # X → 모든 마을 거리
 dist_from_x = dijkstra(x, graph)
 # 모든 마을 → X 거리
@@ -62,3 +60,4 @@ for i in range(1, n + 1):
     answer = max(answer, dist_from_x[i] + dist_to_x[i])
 
 print(answer)
+
