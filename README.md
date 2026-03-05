@@ -14,6 +14,10 @@
 * [특정 거리의 도시 찾기](백준/Silver/18352. 특정 거리의 도시 찾기/BFS_BOJ_18352_Analysis.md) - `#최단거리` `#그래프탐색` `#가중치1`
 
 
+### 분할 정복
+* [곱셈](백준/Silver/1629. 곱셈/D.C_BOJ_1629.md) - `#분할정복` `#거듭제곱` `#나머지연산` `#O(logB)`
+
+
 <!-- 
 * [미로 탐색](https://www.google.com/search?q=./Baekjoon/BJ_2178.md) - `#BFS` `#기초`
 ### 📦 스택 / 큐 (Stack / Queue)
@@ -26,6 +30,8 @@
 
 * [더 맵게](https://www.google.com/search?q=./Programmers/PGS_42626.md) - `#Min_Heap` `#Priority_Queue`
 -->
+
+
 
 ---
 
