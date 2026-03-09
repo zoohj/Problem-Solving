@@ -20,11 +20,11 @@
 * [그룹 단어 체커](백준/Silver/1316. 그룹 단어 체커/문자열_BOJ_1316.md) - `#문자열` `#중복제거` `#set` `#GroupWord`
 
 
+### 그리디
+* [강의실 배정](백준/Gold/11000. 강의실 배정/Greedy_11000.md) - `#그리디` `#최소힙` `#정렬` `#IntervalOverlap`
 
 <!-- 
 
-### 그리디
-* [강의실 배정](백준/Silver/1316. 그룹 단어 체커/문자열_BOJ_1316.md) - `#문자열` `#중복제거` `#set` `#GroupWord`
 
 
 * [미로 탐색](https://www.google.com/search?q=./Baekjoon/BJ_2178.md) - `#BFS` `#기초`
