@@ -1,3 +1,6 @@
+from typing import List
+
+
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         hashmap = {}
@@ -5,4 +8,4 @@ class Solution:
             need = target - nums[i]
             if need in hashmap:
                 return [i, hashmap[need]]
-            hashmap[nums[i]]=i
+            hashmap[nums[i]] = i
