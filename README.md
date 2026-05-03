@@ -76,7 +76,7 @@
 | 사이트 | 완료 수 | 바로가기 |
 | --- | --- | --- |
 | **Programmers** | 5+ | [이동](https://www.google.com/search?q=./Programmers/) |
-| **Baekjoon** | 20+ | [이동](https://www.google.com/search?q=./Baekjoon/) |
+| **Baekjoon** | 20+ | [이동](https://www.google.com/search?q=./Baekjoon/) |  
 <!-- 
 | **LeetCode** | 0 | [이동](https://www.google.com/search?q=./Leetcode/) |
 -->
