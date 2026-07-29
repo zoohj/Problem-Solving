@@ -1,54 +1,51 @@
-<h2><a href="https://leetcode.com/problems/concatenate-non-zero-digits-and-multiply-by-sum-i">4135. Concatenate Non-Zero Digits and Multiply by Sum I</a></h2><h3>Easy</h3><hr><p>You are given an integer <code>n</code>.</p>
+<h2><a href="https://leetcode.com/problems/add-two-numbers">2. Add Two Numbers</a></h2><h3>Medium</h3><hr><p>You are given two <strong>non-empty</strong> linked lists representing two non-negative integers. The digits are stored in <strong>reverse order</strong>, and each of their nodes contains a single digit. Add the two numbers and return the sum&nbsp;as a linked list.</p>
 
-<p>Form a new integer <code>x</code> by concatenating all the <strong>non-zero digits</strong> of <code>n</code> in their original order. If there are no <strong>non-zero</strong> digits, <code>x = 0</code>.</p>
-
-<p>Let <code>sum</code> be the <strong>sum of digits</strong> in <code>x</code>.</p>
-
-<p>Return an integer representing the value of <code>x * sum</code>.</p>
+<p>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
 
 <p>&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
-
-<div class="example-block">
-<p><strong>Input:</strong> <span class="example-io">n = 10203004</span></p>
-
-<p><strong>Output:</strong> <span class="example-io">12340</span></p>
-
-<p><strong>Explanation:</strong></p>
-
-<ul>
-	<li>The non-zero digits are 1, 2, 3, and 4. Thus, <code>x = 1234</code>.</li>
-	<li>The sum of digits is <code>sum = 1 + 2 + 3 + 4 = 10</code>.</li>
-	<li>Therefore, the answer is <code>x * sum = 1234 * 10 = 12340</code>.</li>
-</ul>
-</div>
+<img alt="" src="https://assets.leetcode.com/uploads/2020/10/02/addtwonumber1.jpg" style="width: 483px; height: 342px;" />
+<pre>
+<strong>Input:</strong> l1 = [2,4,3], l2 = [5,6,4]
+<strong>Output:</strong> [7,0,8]
+<strong>Explanation:</strong> 342 + 465 = 807.
+</pre>
 
 <p><strong class="example">Example 2:</strong></p>
 
-<div class="example-block">
-<p><strong>Input:</strong> <span class="example-io">n = 1000</span></p>
+<pre>
+<strong>Input:</strong> l1 = [0], l2 = [0]
+<strong>Output:</strong> [0]
+</pre>
 
-<p><strong>Output:</strong> <span class="example-io">1</span></p>
+<p><strong class="example">Example 3:</strong></p>
 
-<p><strong>Explanation:</strong></p>
-
-<ul>
-	<li>The non-zero digit is 1, so <code>x = 1</code> and <code>sum = 1</code>.</li>
-	<li>Therefore, the answer is <code>x * sum = 1 * 1 = 1</code>.</li>
-</ul>
-</div>
+<pre>
+<strong>Input:</strong> l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]
+<strong>Output:</strong> [8,9,9,9,0,0,0,1]
+</pre>
 
 <p>&nbsp;</p>
 <p><strong>Constraints:</strong></p>
 
 <ul>
-	<li><code>0 &lt;= n &lt;= 10<sup>9</sup></code></li>
+	<li>The number of nodes in each linked list is in the range <code>[1, 100]</code>.</li>
+	<li><code>0 &lt;= Node.val &lt;= 9</code></li>
+	<li>It is guaranteed that the list represents a number that does not have leading zeros.</li>
 </ul>
 
 <!---LeetCode Topics Start-->
 # LeetCode Topics
+## Linked List
+|  |
+| ------- |
+| [0002-add-two-numbers](https://github.com/zoohj/Problem-Solving/tree/master/0002-add-two-numbers) |
 ## Math
 |  |
 | ------- |
-| [3754-concatenate-non-zero-digits-and-multiply-by-sum-i](https://github.com/zoohj/Problem-Solving/tree/master/3754-concatenate-non-zero-digits-and-multiply-by-sum-i) |
+| [0002-add-two-numbers](https://github.com/zoohj/Problem-Solving/tree/master/0002-add-two-numbers) |
+## Recursion
+|  |
+| ------- |
+| [0002-add-two-numbers](https://github.com/zoohj/Problem-Solving/tree/master/0002-add-two-numbers) |
 <!---LeetCode Topics End-->
